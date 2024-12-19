@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decoral</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="body">
+
+    <!-- Navbar start-->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">DECORAL <span> Cafe & Carwash</span></a>
+
+
+
+        <div class="navbar-extra">
+            <a href="javascript:void(0)" id="hamburger-menu" onclick="toggleSidebar()">
+                <i data-feather="menu"></i></a>
+            <!-- Dark/Light mode toggle -->
+            <a href="#" id="theme-toggle" onclick="toggleTheme()">
+                <i data-feather="moon"></i> <!-- Icon yang berubah berdasarkan mode -->
+            </a>
+        </div>
+    </nav>
+    <!-- Navbar end-->
+
+    <!-- Sidebar start -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <a href="#">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="menu">Menu</a>
+        <a href="contact">Kontak</a>
+    </div>
+    <!-- Sidebar end -->
+
+    <!-- Hero Section-->
+    <section class="hero" id="home">
+        <main class="content">
+            <h1>Mari Nikmati Secangkir kopi <span> Sembari Menunggu Kendaran Anda</span></h1>
+            <p>Nikmati waktu santai dengan secangkir kopi hangat sementara mobil Anda dicuci hingga berkilau – karena di
+                sini,
+                kebersihan mobil dan kenikmatan ngopi berjalan seiring.
+            </p>
+        </main>
+    </section>
+    <!-- Hero end-->
+    <!-- About section start -->
+    <section id="about" class="about">
+        <h2><span>Tentang</span> Kami</h2>
+
+        <div class="row">
+            <div class="about-img">
+                <img src="gambar 1.jpg" alt="Tentang Kami">
+            </div>
+            <div class="content">
+                <h3>Mengapa Memilih </h3>
+                <h3>Decoral Cafe & Canwans</h3>
+                <p>"Biarkan kendaraanmu dibersihkan, sementara pikiranmu disegarkan dengan secangkir kopi hangat."</p>
+                <p>"Cafe adalah tempat berbagi kisah, tempat cuci kendaraan adalah tempat menghapus jejak. Keduanya
+                    menyempurnakan
+                    perjalanan."</p>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- About section end -->
+
+    <!-- Menu section Start -->
+    <section id="menu" class="Menu">
+        <h2><span>Menu</span> Kami</h2>
+        <p>Beberapa Menu Tertera Di Bawah Ini</p>
+        <h2><span>Makanan dan Minuman yang</span> Tersedia</h2>
+        <div class="row">
+            <div class="menu-card">
+                <img src="ayam lengkuas.png" alt="Ayam Lengkuas" class="Menu-card-img">
+                <h3> Ayam Lengkuas</h3>
+                <p class="menu-card-price">IDR 25K</p>
+            </div>
+            <div class="menu-card">
+                <img src="nasi goreng.png" alt="Nasi goreng Decoral" class="Menu-card-img">
+                <h3>Nasi goreng Decoral</h3>
+                <p class="menu-card-price">IDR 28K</p>
+            </div>
+            <div class="menu-card">
+                <img src="burger.png" alt="Burger" class="Menu-card-img">
+                <h3>Burger</h3>
+                <p class="menu-card-price">IDR 28K</p>
+            </div>
+            <div class="menu-card">
+                <img src="leci.png" alt="Black Lychee Coffee" class="Menu-card-img">
+                <h3>Black Lychee Coffee</h3>
+                <p class="menu-card-price">IDR 20K</p>
+            </div>
+            <div class="menu-card">
+                <img src="mocha.png" alt="Mochacino" class="Menu-card-img">
+                <h3>Mochacino</h3>
+                <p class="menu-card-price">IDR 18K</p>
+            </div>
+            <div class="menu-card">
+                <img src="pandan.png" alt="Pandan Banana Milky" class="Menu-card-img">
+                <h3>Pandan Banana Milky</h3>
+                <p class="menu-card-price">IDR 20K</p>
+            </div>
+
+
+
+            <section id="Makanan" class="Makanan">
+                <h2><span>Menu</span> Lainnya</h2>
+                <button id="toggleMenuButton"
+                    style="display: block; margin: 10px auto; background-color: red; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Tampilkan
+                    Menu Lainnya</button>
+
+                <!-- Menu Minuman -->
+                <div id="minumanMenu" style="display: none;">
+                    <h2>Minuman</h2>
+
+                    <h4>Coffee Hot/Cold</h4>
+                    <div class="row">
+                        <div class="menu-card">
+                            <h5>Cafe latte</h5>
+                            <p class="menu-card-price">IDR 18K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Kopi Susu</h5>
+                            <p class="menu-card-price">IDR 12K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>vietnam Drip</h5>
+                            <p class="menu-card-price">IDR 25K</p>
+                        </div>
+                    </div>
+
+                    <h4>Special Drink</h4>
+                    <div class="row">
+                        <div class="menu-card">
+                            <h5>Es Kopiral</h5>
+                            <p class="menu-card-price">IDR 15K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Mango Butterfly Pea</h5>
+                            <p class="menu-card-price">IDR 20K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Sunari Sunset</h5>
+                            <p class="menu-card-price">IDR 18K</p>
+                        </div>
+                    </div>
+
+                    <h4>Milk Base Hot/Could</h4>
+                    <div class="row">
+                        <div class="menu-card">
+                            <h5> Chocolate </h5>
+                            <p class="menu-card-price">IDR 15K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Red Velvet</h5>
+                            <p class="menu-card-price">IDR 20K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Taro</h5>
+                            <p class="menu-card-price">IDR 20K</p>
+                        </div>
+                    </div>
+
+                    <h4>Tea Hot/Cold</h4>
+                    <div class="row">
+                        <div class="menu-card">
+                            <h5>Thaitea</h5>
+                            <p class="menu-card-price">IDR 15K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5> Green Tea </h5>
+                            <p class="menu-card-price">IDR 10K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Violetta Tea</h5>
+                            <p class="menu-card-price">IDR 18K</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Makanan -->
+                <div id="makananMenu" style="display: none;">
+                    <h2>Makanan</h2>
+                    <div class="row">
+                        <div class="menu-card">
+                            <h5>Nasi Goreng Cakalang</h5>
+                            <p class="menu-card-price">IDR 28K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Nasi Ayam Penyet</h5>
+                            <p class="menu-card-price">IDR 24K</p>
+                        </div>
+                        <div class="menu-card">
+                            <h5>Ayam Palekko</h5>
+                            <p class="menu-card-price">IDR 22K</p>
+                        </div>
+                        <div class="row">
+                            <div class="menu-card">
+                                <h5>Beef Rice Bowl</h5>
+                                <p class="menu-card-price">IDR 28K</p>
+                            </div>
+                            <div class="menu-card">
+                                <h5>Nasi Ayam Geprek</h5>
+                                <p class="menu-card-price">IDR 22K</p>
+                            </div>
+                            <div class="menu-card">
+                                <h5>Nasi Ayam Bakar</h5>
+                                <p class="menu-card-price">IDR 25K</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cuci Mobil -->
+                <div id="mobilcuci" style="display: none;">
+                    <h2>Cuci Mobil</h2>
+                    <div class="row">
+                        <div class="menu-card">
+                            <h5>Mulai Dari Harga</h5>
+                            <p class="menu-card-price">IDR 50-100K</p>
+                        </div>
+                    </div>
+            </section>
+
+            <script>
+                // JavaScript untuk Toggle Menu
+                const toggleButton = document.getElementById('toggleMenuButton');
+                const minumanMenu = document.getElementById('minumanMenu');
+                const makananMenu = document.getElementById('makananMenu');
+                const mobilcuci = document.getElementById('mobilcuci');
+
+                toggleButton.addEventListener('click', () => {
+                    const isHidden = minumanMenu.style.display === 'none' && makananMenu.style.display === 'none';
+
+                    if (isHidden) {
+                        minumanMenu.style.display = 'block';
+                        makananMenu.style.display = 'block';
+                        mobilcuci.style.display = 'block';
+                        toggleButton.textContent = 'Sembunyikan Menu Lainnya';
+                    } else {
+                        minumanMenu.style.display = 'none';
+                        makananMenu.style.display = 'none';
+                        mobilcuci.style.display = 'none';
+                        toggleButton.textContent = 'Tampilkan Menu Lainnya';
+                    }
+                });
+            </script>
+
+
+        </div>
+        <selection id="galery" id="galery"></select>
+            <h2><span>Galery</span> Kami</h2>
+            <p>Kami Menyediakan Beberapa Dokumentasi Tentang Tempat Kami</p>
+            <div class="row">
+                <div class="menu-card">
+                    <img src="c.jpg" class="Menu-card-img">
+                </div>
+                <div class="menu-card">
+                    <img src="c2.jpg" class="Menu-card-img">
+                </div>
+                <div class="menu-card">
+                    <img src="c5.jpg" class="Menu-card-img">
+                </div>
+                <div class="menu-card">
+                    <img src="5d.jpg" class="Menu-card-img">
+                </div>
+                <div class="menu-card">
+                    <img src="m1.jpg" class="Menu-card-img">
+                </div>
+                <div class="menu-card">
+                    <img src="m3.jpg" class="Menu-card-img">
+                </div>
+
+
+
+
+            </div>
+    </section>
+    <!-- Menu section end -->
+
+
+    <!-- Contact Section Start -->
+    <div class="navbar">
+        <section id="contact" class="contact">
+            <h2><span>Kontak</span>Kami</h2>
+            <div class="container">
+                <p>Website Saya Hanya Bisa Melakukan Pemesanan Lewat Online--Klik Di Bawah Ini Untuk Melakukan
+                    Pemesanan
+                </p>
+                <a id="waLink" href="082393404142" target="_blank" class="contact-link">WhatsApp</a>
+                <br>or<br>
+                <a id="igLink" href="@mfajarabdl_" target="_blank" class="contact-link">Instagram</a>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- section map-->
+    <div class="row">
+        <h2><span>Lokasi</span> Tempat</h2>
+        <section id="mapid">
+            <div class="navbar">
+                <h2 style="text-align: center;">PETA</h2>
+                <div id="mapid" style="width: 600%; height: 400px; ;"></div>
+            </div>
+    </div>
+    </section>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+
+    </div>
+    </section>
+    <!-- Contact Section end-->
+
+    <!-- footer start -->
+    <footer>
+        <div class="socials">
+            <a href="#"><i data-feather="instagram"></i></a>
+            <a href="#"><i data-feather="twitter"></i></a>
+            <a href="#"><i data-feather="facebook"></i></a>
+        </div>
+        <div class="credit">
+            <p>Created by <a href="">sandhikagelih
+
+                </a>. | &copy; 2024.</p>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+
+    <!-- Feather Icon -->
+    <script>
+        feather.replace();
+
+        // Toggle theme (dark/light mode)
+        function toggleTheme() {
+            const body = document.getElementById('body');
+            const themeToggleIcon = document.getElementById('theme-toggle').querySelector('i');
+            body.classList.toggle('dark-mode');
+
+            // Change icon based on theme
+            if (body.classList.contains('dark-mode')) {
+                themeToggleIcon.setAttribute('data-feather', 'sun');
+            } else {
+                themeToggleIcon.setAttribute('data-feather', 'moon');
+            }
+            feather.replace(); // Reinitialize icons
+        }
+
+        // Toggle sidebar visibility
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarWidth = sidebar.style.width === '250px' ? '0' : '250px';
+            sidebar.style.width = sidebarWidth;
+        }
+    </script>
+</body>
+
+</html>
